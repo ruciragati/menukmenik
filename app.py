@@ -37,8 +37,8 @@ uploaded_file = st.file_uploader(
     )
 
 if uploaded_file is not None:
-    image = Image.open(uploaded_file).convert('RGB')
-    image = Image.new("RGB", img.size)
+    img = Image.open(uploaded_file)
+    image = Image.new("RGB", img.size) 
     image.paste(img)
     st.image(image, caption='Uploaded Image', use_container_width=True)
     
