@@ -32,7 +32,7 @@ preprocess = transforms.Compose([
 
 uploaded_file = st.file_uploader(
         label="Upload Image", 
-        type=["jpg", "png", "jpeg"],
+        type=["jpg", "png", "jpeg", "heic", "HEIC"],
         label_visibility="collapsed"  
     )
 
