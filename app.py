@@ -1,7 +1,7 @@
 import streamlit as st
 import torch
 import urllib.request
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ExifTags
 from torchvision import transforms
 from pillow_heif import register_heif_opener
 from src.model import get_dog_classifier
@@ -37,21 +37,35 @@ uploaded_file = st.file_uploader(
     )
 
 if uploaded_file is not None:
-    img = Image.open(uploaded_file)
-    image = Image.new("RGB", img.size) 
-    image = ImageOps.exif_transpose(image)
-    image.paste(img)
+    raw_img = Image.open(uploaded_file)
+    image = raw_img.copy()
+    try:
+        exif = image._getexif()
+        if exif is not None:
+            orientation = next((k for k, v in ExifTags.TAGS.items() if v == 'Orientation'), None)
+            
+            if orientation in exif:
+                if exif[orientation] == 3:
+                    image = image.rotate(180, expand=True)
+                elif exif[orientation] == 6:
+                    image = image.rotate(270, expand=True)
+                elif exif[orientation] == 8:
+                    image = image.rotate(90, expand=True)
+    except Exception:
+        pass
+
+    image = image.convert('RGB')
     st.image(image, caption='Uploaded Image', use_container_width=True)
-    
-    st.write("Identifying...")
-    input_tensor = preprocess(image).unsqueeze(0)
-    
-    with torch.no_grad():
-        output = model(input_tensor)
-        probabilities = torch.nn.functional.softmax(output[0], dim=0)
-        confidence, prediction = torch.max(probabilities, 0)
-    
-    names = ["Menik", "Menuk"]
-    result = names[prediction.item()]
-    
-    st.success(f"That's **{result}**! ({confidence.item()*100:.2f}% confidence)")
+
+st.write("Identifying...")
+input_tensor = preprocess(image).unsqueeze(0)
+
+with torch.no_grad():
+    output = model(input_tensor)
+    probabilities = torch.nn.functional.softmax(output[0], dim=0)
+    confidence, prediction = torch.max(probabilities, 0)
+
+names = ["Menik", "Menuk"]
+result = names[prediction.item()]
+
+st.success(f"That's **{result}**! ({confidence.item()*100:.2f}% confidence)")
