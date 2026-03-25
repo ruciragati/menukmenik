@@ -2,6 +2,7 @@ import streamlit as st
 import torch
 import urllib.request
 from PIL import Image, ImageOps
+from torchvision import transforms
 from pillow_heif import register_heif_opener
 from src.model import get_dog_classifier
 
