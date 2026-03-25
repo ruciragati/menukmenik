@@ -1,8 +1,7 @@
 import streamlit as st
 import torch
 import urllib.request
-from PIL import Image
-from torchvision import transforms
+from PIL import Image, ImageOps
 from pillow_heif import register_heif_opener
 from src.model import get_dog_classifier
 
@@ -38,6 +37,7 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert('RGB')
+    image = ImageOps.exif_transpose(image)
     st.image(image, caption='Uploaded Image', use_container_width=True)
     
     st.write("Identifying...")
