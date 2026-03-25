@@ -39,6 +39,7 @@ uploaded_file = st.file_uploader(
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
     image = Image.new("RGB", img.size) 
+    image = ImageOps.exif_transpose(image)
     image.paste(img)
     st.image(image, caption='Uploaded Image', use_container_width=True)
     
