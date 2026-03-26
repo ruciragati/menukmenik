@@ -57,15 +57,15 @@ if uploaded_file is not None:
     image = image.convert('RGB')
     st.image(image, caption='Uploaded Image', use_container_width=True)
 
-st.write("Identifying...")
-input_tensor = preprocess(image).unsqueeze(0)
+    st.write("Identifying...")
+    input_tensor = preprocess(image).unsqueeze(0)
 
-with torch.no_grad():
-    output = model(input_tensor)
-    probabilities = torch.nn.functional.softmax(output[0], dim=0)
-    confidence, prediction = torch.max(probabilities, 0)
+    with torch.no_grad():
+        output = model(input_tensor)
+        probabilities = torch.nn.functional.softmax(output[0], dim=0)
+        confidence, prediction = torch.max(probabilities, 0)
 
-names = ["Menik", "Menuk"]
-result = names[prediction.item()]
+    names = ["Menik", "Menuk"]
+    result = names[prediction.item()]
 
-st.success(f"That's **{result}**! ({confidence.item()*100:.2f}% confidence)")
+    st.success(f"That's **{result}**! ({confidence.item()*100:.2f}% confidence)")
