@@ -9,8 +9,8 @@ A Deep Learning web application designed to distinguish between my two favorite 
     <td align="center"><b>Menuk</b></td>
   </tr>
   <tr>
-    <td><img src="images/menik.jpg" width="300"></td>
-    <td><img src="images/menuk.JPG" width="300"></td>
+    <td><img src="images/menik.jpg" width="300" height="300"></td>
+    <td><img src="images/menuk.JPG" width="300" height="300"></td>
   </tr>
 </table>
 
