@@ -4,16 +4,16 @@ A Deep Learning web application designed to distinguish between my two favorite 
 ## Link: https://menukmenik.streamlit.app/
 
 ## Project Overview
-**Training:** Conducted in Google Colab using PyTorch.
-**Model:** ResNet18 with a custom FC head.
-**Deployment:** Streamlit Cloud.
-**Weights Hosting:** Hugging Face.
+* **Training:** Conducted in Google Colab using PyTorch.
+* **Model:** ResNet18 with a custom FC head.
+* **Deployment:** Streamlit Cloud.
+* **Weights Hosting:** Hugging Face.
 
 ## Tech Stack
-Language: Python 3.12+
-Framework: PyTorch & Torchvision
-Web Interface: Streamlit
-Image Handling: Pillow & Pillow-Heif
+* **Language:** Python 3.12+
+* **Framework:** PyTorch & Torchvision
+* **Web Interface:** Streamlit
+* **Image Handling:** Pillow & Pillow-Heif
 
 ## Installation & Local Setup
 1. Clone the repo: git clone https://github.com/yourusername/menukmenik.git
