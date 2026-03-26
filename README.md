@@ -1,6 +1,11 @@
 # Menuk vs. Menik Classifier
 A Deep Learning web application designed to distinguish between my two favorite Golden Retrievers, Menuk and Menik, using Transfer Learning.
 
+## The Stars of the Show
+| Menik | Menuk |
+| :---: | :---: |
+| ![Menik](images/menik.HEIC) | ![Menuk](images/menuk.jpg) |
+
 ## Link: https://menukmenik.streamlit.app/
 
 ## Project Overview
