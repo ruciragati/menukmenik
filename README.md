@@ -2,9 +2,17 @@
 A Deep Learning web application designed to distinguish between my two favorite Golden Retrievers, Menuk and Menik, using Transfer Learning.
 
 ## The Stars of the Show
-| Menik | Menuk |
-| :---: | :---: |
-| ![Menik](images/menik.HEIC) | ![Menuk](images/menuk.jpg) |
+
+<table>
+  <tr>
+    <td align="center"><b>Menik</b></td>
+    <td align="center"><b>Menuk</b></td>
+  </tr>
+  <tr>
+    <td><img src="images/menik.jpg" width="300"></td>
+    <td><img src="images/menuk.jpg" width="300"></td>
+  </tr>
+</table>
 
 ## Link: https://menukmenik.streamlit.app/
 
